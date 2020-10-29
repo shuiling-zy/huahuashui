@@ -7,6 +7,43 @@ import com.scuec.entity.VerificationCode;
 
 public class EmailVerficationCheckImpl {
 
+
+    private String email;
+
+    private String password;
+
+    private String code;
+
+    public EmailVerficationCheckImpl(String email,String password, String code) {
+        this.email = email;
+        this.password = password;
+        this.code = code;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     usersDaoImpl udi = new usersDaoImpl();                             //用户处理
     VerficationCodeDaoImpl vcdi = new VerficationCodeDaoImpl();         //验证码处理
 
@@ -16,38 +53,31 @@ public class EmailVerficationCheckImpl {
     VerificationCode vdb = new VerificationCode();               //来自数据库的验证码和邮箱
 
 
-    /**
-     * 从前端获得邮箱，密码和提交的验证码
-     */
-
-    public void web(){
-
-
-    }
-
-
-
-    /**
-     * 从数据库中读取对应邮箱的验证码
-     */
-
-    public void db(Users user,usersDaoImpl udi,VerificationCode vdb){
-
-        vdb.setEmail(user.getEmail());
-
-        vdb.setCode(String.valueOf(udi.getByEamil(user.getEmail())));
-
-    }
-
-    /**
-     *处理验证
-     *
-     */
-
     public boolean check(){
+
+
+        /**
+         * 从前端获得邮箱，密码和提交的验证码
+         */
+            user.setEmail(email);
+            user.setPassword(password);
+            vweb.setEmail(email);
+            vweb.setCode(code);
+
+
+        /**
+         * 从数据库中读取对应邮箱的验证码
+         */
+            vdb.setCode(vcdi.getByEamil(vweb .getEmail()).getCode());
+
+
+        /**
+         *处理验证
+         *
+         */
             if (vweb.getCode().equals(vdb.getCode())) {
 
-                System.out.println("验证成功");
+                //System.out.println("验证成功");
 
                 udi.add(user);
 
@@ -55,7 +85,7 @@ public class EmailVerficationCheckImpl {
 
             }else {
 
-                System.out.println("验证码不一致");
+                //System.out.println("验证码不一致");
                 return false;
             }
     }

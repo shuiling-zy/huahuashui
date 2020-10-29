@@ -28,8 +28,8 @@ public class usersDaoImpl extends BaseDaoImpl implements BaseDao{
 
     public void add(Users user) {
         //外键约束
-        String sql = "insert into users(password,email) values(?,?)";
-        Object[] paramsValue = {user.getPassword(),user.getEmail()};
+        String sql = "insert into users(email,password) values(?,?)";
+        Object[] paramsValue = {user.getEmail(),user.getPassword()};
         super.Update(sql, paramsValue);
     }
 

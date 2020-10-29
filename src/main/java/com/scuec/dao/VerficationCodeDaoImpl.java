@@ -16,7 +16,7 @@ public class VerficationCodeDaoImpl extends BaseDaoImpl implements BaseDao{
     }
 
     public List<VerificationCode> getList() {
-        String sql = "select * from VerificationCode";
+        String sql = "select * from verificationCode";
         List<VerificationCode> list = super.query(sql, null, VerificationCode.class);
         return list;
     }
@@ -24,20 +24,20 @@ public class VerficationCodeDaoImpl extends BaseDaoImpl implements BaseDao{
 
     public void add(VerificationCode verificationCode) {
         //外键约束
-        String sql = "insert into VerificationCode(id,code,email) values(?,?,?)";
+        String sql = "insert into verificationCode(id,code,email) values(?,?,?)";
         Object[] paramsValue = {verificationCode.getId(),verificationCode.getCode(),verificationCode.getEmail()};
         super.Update(sql, paramsValue);
     }
 
 
     public void update(VerificationCode verificationCode) {
-        String sql = "update into VerificationCode(password) values (?)";
+        String sql = "update into verificationCode(password) values (?)";
         Object[] paramsValue = {verificationCode.getCode()};
         super.Update(sql, paramsValue);
     }
 
     public void delete(int id) {
-        String sql = "delete from VerificationCode where id=?";
+        String sql = "delete from verificationCode where id=?";
         Object[] paramsValue = {id};
         super.Update(sql, paramsValue);
     }
