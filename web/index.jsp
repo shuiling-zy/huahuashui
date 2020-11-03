@@ -7,15 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  <form action="VerificationServlet" method="post">
-    邮箱: <input type="text" name="email" /><br>
-    密码: <input type="password" name="password" /><br>
-    验证码: <input type="text" name="code" /><br>
-    <input type="submit" value="注册">
-  </form>
-  </body>
+<head>
+  <title>$Title$</title>
+</head>
+<body>
+<form action="VerificationServlet" method="post">
+  邮箱: <input type="text" name="email" /><br>
+  密码: <input type="password" name="password" /><br>
+  验证码: <input type="text" name="code" /><br>
+  <input type="submit" value="注册">
+</form>
+</body>
 </html>

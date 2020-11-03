@@ -8,6 +8,8 @@ public class VerificationCode {
 
     private String email;
 
+
+
     public VerificationCode() {
     }
 

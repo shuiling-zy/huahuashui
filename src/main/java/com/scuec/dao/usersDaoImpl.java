@@ -12,6 +12,7 @@ public class usersDaoImpl extends BaseDaoImpl implements BaseDao{
 //        return  (list!=null&&list.size()>0) ? list.get(0) : null;
 //    }
 
+
     @Override
     public Users getByEamil(String email) {
         String sql = "select * from users where email=?";

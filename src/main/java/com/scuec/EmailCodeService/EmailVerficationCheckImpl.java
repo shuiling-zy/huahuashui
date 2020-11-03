@@ -20,6 +20,10 @@ public class EmailVerficationCheckImpl {
         this.code = code;
     }
 
+    public EmailVerficationCheckImpl() {
+
+    }
+
     public String getPassword() {
         return password;
     }
@@ -42,6 +46,15 @@ public class EmailVerficationCheckImpl {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    @Override
+    public String toString() {
+        return "EmailVerficationCheckImpl{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", code='" + code + '\'' +
+                '}';
     }
 
     usersDaoImpl udi = new usersDaoImpl();                             //用户处理
@@ -68,7 +81,7 @@ public class EmailVerficationCheckImpl {
         /**
          * 从数据库中读取对应邮箱的验证码
          */
-            vdb.setCode(vcdi.getByEamil(vweb .getEmail()).getCode());
+            vdb.setCode(vcdi.getByEamil(vweb.getEmail()).getCode());
 
 
         /**
@@ -88,6 +101,17 @@ public class EmailVerficationCheckImpl {
                 //System.out.println("验证码不一致");
                 return false;
             }
+    }
+
+    public boolean checkuser(){
+        /**
+         * 查询用户是否存在
+         */
+        if ( udi.getByEamil(email) != null){
+            return true;
+        }else {
+            return false;
+        }
     }
 
 
